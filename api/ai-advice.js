@@ -1,0 +1,4 @@
+import { ai } from 'hatchable';
+export const access='public';
+export const methods=['POST'];
+export default async function(req,res){const question=String(req.body?.question||'').slice(0,1000);if(!question)return res.status(400).json({error:'QUESTION_REQUIRED'});const answer=await ai.generateText({model:'sonnet',purpose:'home-service-advice',system:'You are Buddy AI for Home Buddy, a trusted home services booking app. Give concise, practical advice and recommend one of these services when relevant: Electrician, Plumber, Carpenter, Cleaner, AC, Painting. Do not claim to diagnose dangerous electrical, gas, structural, or medical issues. For urgent hazards tell the user to stop and contact an appropriate emergency professional.',prompt:question,maxSteps:2});res.json({answer});}
