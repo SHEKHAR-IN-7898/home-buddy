@@ -1,0 +1,1 @@
+INSERT INTO services (name,slug,description,icon,starting_price,rating,review_count,featured) SELECT 'Electrician','electrician','Switches, wiring, fans & electrical fixes','zap',199,4.9,1280,true WHERE NOT EXISTS (SELECT 1 FROM services WHERE slug='electrician');
